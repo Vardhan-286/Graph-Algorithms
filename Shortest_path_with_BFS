@@ -20,17 +20,17 @@ int distance(vector<vector<int> > &adj, int s, int t,int prev[],int dist[]) {
 		}
 	}
     
-    int length=0;
-    while(t!=s){
-  	    if(prev[t]==-1){
-  		    return -1;
-  	    }
-  	    else{
+  int length=0;
+  while(t!=s){
+  	  if(prev[t]==-1){
+  		   return -1;
+  	   }
+  	   else{
   		    length++;
-  	        t=prev[t];
-  	    }
-    }
-    return length;
+  	      t=prev[t];
+  	   }
+   }
+   return length;
 }
 
 int main() {

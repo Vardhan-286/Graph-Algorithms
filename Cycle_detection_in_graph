@@ -27,8 +27,8 @@ int acyclic(vector<vector<int> > &adj,int n) {
      
     for(int i=0;i<n;i++){
     	if(DFS(adj,i,stack,visited)){
-    		return 1;
-		  }
+    	    return 1;
+      }
     }
     return 0;
 }

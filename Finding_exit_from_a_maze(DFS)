@@ -3,17 +3,16 @@
 using namespace std;
 
 int reach(vector<vector<int> > &adj, int x, int y,bool visited[]) {
-  //write your code here
     visited[x]=true;
     
     for(int v:adj[x]){
     	if(!visited[v]){
-    		reach(adj,v,y,visited);
-		}
-	}
+            reach(adj,v,y,visited);
+        }
+    }
 	
-	if(visited[y])
-	   return 1; 
+    if(visited[y])
+	return 1; 
     return 0;
 }
 

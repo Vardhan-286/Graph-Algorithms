@@ -1,0 +1,50 @@
+#include <iostream>
+#include <vector>
+using namespace std;
+
+bool DFS(vector<vector<int> > &adj,int v,bool stack[],bool visited[]);
+int acyclic(vector<vector<int> > &adj,int n);
+
+int main() {
+  size_t n, m;
+  cin >> n >> m;
+  vector<vector<int> > adj(n, vector<int>());
+  for (size_t i = 0; i < m; i++) {
+    int x, y;
+    cin >> x >> y;
+    adj[x - 1].push_back(y - 1);
+  }
+  cout << acyclic(adj,n);
+}
+
+int acyclic(vector<vector<int> > &adj,int n) {
+  bool visited[n];
+  bool stack[n];
+  for(int i=0;i<n;i++){
+     visited[i]=false;
+     stack[i]=false;
+  }
+     
+    for(int i=0;i<n;i++){
+    	if(DFS(adj,i,stack,visited)){
+    		return 1;
+		  }
+    }
+    return 0;
+}
+
+bool DFS(vector<vector<int> > &adj,int v,bool stack[],bool visited[]) {
+	if(!visited[v]){
+	visited[v] = true;
+	stack[v] = true;
+	for(vector<int>::iterator i=adj[v].begin();i!=adj[v].end();i++){
+		if(!visited[*i] && DFS(adj,*i,stack,visited)){
+			return true;
+		}
+		else if (stack[*i])
+		    return true;
+	}
+  }
+    stack[v]=false;
+	return false;
+}

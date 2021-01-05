@@ -26,7 +26,7 @@ int distance(vector<vector<int> > &adj, int s, int t,int prev[],int dist[]) {
   		   return -1;
   	   }
   	   else{
-  		    length++;
+              length++;
   	      t=prev[t];
   	   }
    }
